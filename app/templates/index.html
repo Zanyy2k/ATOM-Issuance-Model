@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATOM Issuance Model</title>
+</head>
+
+<body>
+    <h1>ATOM Issuance Model</h1>
+
+    <h3>Please enter the Setting Parameters</h3>
+    <form action="/populate" method="post">
+        <!-- Current Total Atom Supply -->
+        <label for="current_total_atom_supply">Current Total Atom Supply (Atom) :</label>
+        <input type="text" name="current_total_atom_supply" required>
+        <br>
+
+        <!-- Current Community Pool Balance -->
+        <label for="current_community_pool_balance">Current Community Pool Balance (Atom) :</label>
+        <input type="text" name="current_community_pool_balance" required>
+        <br>
+
+        <!-- Current Security Subsidy Rate -->
+        <label for="current_security_subsidy_rate">Current Security Subsidy Rate (%) :</label>
+        <input type="text" name="current_security_subsidy_rate" required>
+        <br>
+
+        <!-- Security Subsidy Decay -->
+        <label for="security_subsidy_decay">Security Subsidy Decay (Per Month) :</label>
+        <input type="text" name="security_subsidy_decay" required>
+        <br>
+
+        <!-- Security Subsidy Termination -->
+        <label for="security_subsidy_termination">Security Subsidy Termination (Months) :</label>
+        <input type="text" name="security_subsidy_termination" required>
+        <br>
+
+        <!-- Issuance -->
+        <label for="issuance">Issuance (Atom / Month) :</label>
+        <input type="text" name="issuance" required>
+        <br>
+
+        <!-- Issuance Reduction Epoch Rate -->
+        <label for="issuance_reduction_epoch_rate">Issuance Reduction Epoch Rate (Months) :</label>
+        <input type="text" name="issuance_reduction_epoch_rate" required>
+        <br>
+
+        <!-- Issuance Reduction Amount -->
+        <label for="issuance_reduction_amount">Issuance Reduction Amount (% Per Epoch) :</label>
+        <input type="text" name="issuance_reduction_amount" required>
+        <br>
+
+        <!-- Steady-State Issuance -->
+        <label for="steady_state_issuance">Steady-State Issuance (Atom / Month) :</label>
+        <input type="text" name="steady_state_issuance" required>
+        <br>
+
+        <!-- Time Until Steady State Issuance -->
+        <label for="time_until_steady_state_issuance">Time Until Steady State Issuance (Months) :</label>
+        <input type="text" name="time_until_steady_state_issuance" required>
+        <br>
+
+        <!-- Distrbution Module % to Community Pool -->
+        <label for="distrbution_module_pct_to_community_pool">Distrbution Module % to Community Pool (%) :</label>
+        <input type="text" name="distrbution_module_pct_to_community_pool" required>
+        <br>
+
+        <!-- Timeline length -->
+        <label for="timeline_length">Timeline Length (Months) :</label>
+        <input type="text" name="timeline_length" required>
+
+        <br><br>
+
+        <button type="submit">Populate</button>
+    </form>
+
+    {% if data %}
+    <table border="1" id="inputTable">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in setting_inputs.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Please enter the setting parameters!</p>
+    {% endif %}
+</body>
+
+</html>
