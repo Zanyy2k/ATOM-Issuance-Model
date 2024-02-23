@@ -76,7 +76,7 @@
         <button type="submit">Populate</button>
     </form>
 
-    {% if data %}
+    {% if setting_inputs %}
     <table border="1" id="inputTable">
         <thead>
             <tr>
@@ -96,6 +96,25 @@
     {% else %}
     <p>Please enter the setting parameters!</p>
     {% endif %}
+    <br>
+    {{ data_table|safe }}
+
+
+    <div id="chart1"></div>
+    <div id="chart2"></div>
+
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- Render the chart using the JSON data -->
+    <script>
+        var chartData1 = {{ chart1 | tojson | safe }};
+        Plotly.newPlot('chart1', JSON.parse(chartData1), {});
+
+        var chartData2 = {{ chart2 | tojson | safe }};
+        Plotly.newPlot('chart2', JSON.parse(chartData2), {});
+    </script>
+
 </body>
 
 </html>
