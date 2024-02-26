@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+# import plotly.express as px
 from app.charts.chart_data import generate_issued_chart, generate_cumm_issued_chart
 
 def calculate_outflow_security_subsidy(month, security_subsidy_termination, current_security_subsidy, security_subsidy_decay, distrbution_module_pct_to_community_pool):
@@ -112,16 +112,18 @@ def main():
 
 
     # Display the line chart using st.line_chart
-    st.plotly_chart(px.line(df, x='Month', y=['Inflow Issued ATOM (new)', 'Issued ATOM (old)'],
-                labels={'value': 'Value', 'variable': 'Category'},
-                title='Issued ATOM',
-                template='plotly_white'))
+    st.line_chart(df, x='Month', y=['Inflow Issued ATOM (new)', 'Issued ATOM (old)'])
+    # st.plotly_chart(px.line(df, x='Month', y=['Inflow Issued ATOM (new)', 'Issued ATOM (old)'],
+    #             labels={'value': 'Value', 'variable': 'Category'},
+    #             title='Issued ATOM',
+    #             template='plotly_white'))
     
-    st.plotly_chart(px.line(df, x='Month', y=['Total Cumulatively Issued ATOM (new)', 'Cumulatively Issued ATOM (old)'],
-                labels={'value': 'Value', 'variable': 'Category'},
-                title='Cumulatively Issued ATOM',
-                template='plotly_white',
-                line_dash_sequence=['solid', 'dot']))
+    st.line_chart(df, x='Month', y=['Total Cumulatively Issued ATOM (new)', 'Cumulatively Issued ATOM (old)'])
+    # st.plotly_chart(px.line(df, x='Month', y=['Total Cumulatively Issued ATOM (new)', 'Cumulatively Issued ATOM (old)'],
+    #             labels={'value': 'Value', 'variable': 'Category'},
+    #             title='Cumulatively Issued ATOM',
+    #             template='plotly_white',
+    #             line_dash_sequence=['solid', 'dot']))
 
 
 
