@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 # import plotly.express as px
-from app.charts.chart_data import generate_issued_chart, generate_cumm_issued_chart
+# from app.charts.chart_data import generate_issued_chart, generate_cumm_issued_chart
 
 def calculate_outflow_security_subsidy(month, security_subsidy_termination, current_security_subsidy, security_subsidy_decay, distrbution_module_pct_to_community_pool):
     if month > security_subsidy_termination:
